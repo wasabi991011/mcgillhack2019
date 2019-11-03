@@ -27,8 +27,10 @@ public class MHAgent : Agent
         AddReward(-1.0f / this.agentParameters.maxStep);
 
         int bodyIndex = PickFromNChoices(Mathf.Clamp(vectorAction[0], -1, 1), -1, 1, area.numberOfMasses);
-        Vector3 controlSignal = new Vector3(vectorAction[1], vectorAction[2], vectorAction[3]);
-        area.masses[bodyIndex].GetComponent<Rigidbody>().AddForce(controlSignal * magnitudeMultiplier);
+        Vector3 unitRod = Vector3.Normalize(area.masses[bodyIndex].transform.position);
+        Vector3 unitX = new Vector3(1.0f, 0, 0);
+        Vector3 unitControl = Vector3.Cross(unitRod, unitX);
+        area.masses[bodyIndex].GetComponent<Rigidbody>().AddForce(unitControl* vectorAction[1] * magnitudeMultiplier);
 
         area.logString += bodyIndex + ", ";
 
