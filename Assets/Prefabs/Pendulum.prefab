@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7477763793995314907}
   - component: {fileID: 7477763793995314906}
   - component: {fileID: 7477763793995314884}
-  - component: {fileID: 7477763793995314885}
+  - component: {fileID: 855208475200046826}
   m_Layer: 8
   m_Name: Pendulum
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7477763793995314887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.302, z: 0}
+  m_LocalPosition: {x: 0, y: -2.228, z: 0}
   m_LocalScale: {x: 0.25, y: 2.228, z: 0.25}
   m_Children:
   - {fileID: 7477763794219885486}
@@ -110,25 +110,37 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 96
   m_CollisionDetection: 0
---- !u!145 &7477763793995314885
-SpringJoint:
+--- !u!59 &855208475200046826
+HingeJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7477763793995314887}
   m_ConnectedBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 1, z: 0}
+  m_Anchor: {x: 0, y: 1.0000001, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 0
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
-  serializedVersion: 2
-  m_Spring: 1000000
-  m_Damper: 10
-  m_MinDistance: 0.01
-  m_MaxDistance: 0.01
-  m_Tolerance: 0.025
+  m_UseSpring: 0
+  m_Spring:
+    spring: 0
+    damper: 0
+    targetPosition: 0
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 0
+    force: 0
+    freeSpin: 0
+  m_UseLimits: 0
+  m_Limits:
+    min: 0
+    max: 0
+    bounciness: 0
+    bounceMinVelocity: 0.2
+    contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0

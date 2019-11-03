@@ -24,17 +24,30 @@ public class MHArea : Area
     {
         if (masses.Count == numberOfMasses)
         {
-            Vector3 direction = RandomSphericalCoordinate(Vector3.zero, 1);
+            bool isLeft = Random.Range(0, 2) == 0;
+
+            
 
             for (int i = 0; i < masses.Count; i++)
             {
-                Normal normalDistribution = new Normal(10, massRatio);
+                Normal normalDistribution = new Normal(5, massRatio);
 
                 masses[i].transform.GetChild(0).GetComponent<Rigidbody>().mass = (float)normalDistribution.Sample();
 
-                masses[i].transform.position = direction * (i + 1) + anchor.transform.position;
+                if (isLeft)
+                {
+                    masses[i].transform.position = new Vector3(transform.position.x, transform.position.y, -4f * i - rodLength);
 
-                masses[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    masses[i].transform.rotation = Quaternion.Euler(90f, 0, 0);
+                }
+                else
+                {
+                    masses[i].transform.position = new Vector3(transform.position.x, transform.position.y, 4f * i + rodLength);
+
+                    masses[i].transform.rotation = Quaternion.Euler(-90f, 0, 0);
+                }
+
+                masses[i].transform.GetChild(0).GetComponent<Rigidbody>().AddForce(new Vector3(0, Random.Range(-100f, 100f), 0), ForceMode.Impulse);
             }
         }
         else
@@ -49,17 +62,17 @@ public class MHArea : Area
 
         for (int i = 0; i < numberOfMasses; i++)
         {
-            GameObject temporaryObject = Instantiate(massPrefab, new Vector3(transform.position.x, -4f * i, transform.position.z), transform.rotation);
+            GameObject temporaryObject = Instantiate(massPrefab, new Vector3(transform.position.x, -4f * i - rodLength, transform.position.z), transform.rotation);
 
             temporaryObject.transform.parent = this.transform;
 
             if (i == 0)
             {
-                temporaryObject.GetComponent<SpringJoint>().connectedBody = anchor.GetComponent<Rigidbody>();
+                temporaryObject.GetComponent<HingeJoint>().connectedBody = anchor.GetComponent<Rigidbody>();
             }
             else
             {
-                temporaryObject.GetComponent<SpringJoint>().connectedBody = masses[i - 1].transform.GetChild(0).GetComponent<Rigidbody>();
+                temporaryObject.GetComponent<HingeJoint>().connectedBody = masses[i - 1].transform.GetChild(0).GetComponent<Rigidbody>();
             }
 
             masses.Add(temporaryObject);
@@ -104,15 +117,15 @@ public class MHArea : Area
     {
         return (DistanceFromDown() <= tolerance/2.0f) && (DistanceFromImmobile() <= tolerance/2.0f);
     }
-    
-   /**
-    * Returns the coordinate of the mass with respect to its attachement point 
-    * (either the anchor or mass that is one ord closer to the anchor)
-    **/
+
+    /**
+     * Returns the coordinate of the mass with respect to its attachement point 
+     * (either the anchor or mass that is one ord closer to the anchor)
+     **/
     public Vector3[] GetDiffCoords()
     {
         Vector3[] coords = new Vector3[numberOfMasses];
-        
+
         Vector3 prevPos = anchor.transform.position;
         Vector3 newPos;
         for (int i = 0; i < numberOfMasses; i++)
