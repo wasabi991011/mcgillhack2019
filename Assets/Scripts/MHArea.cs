@@ -12,7 +12,7 @@ public class MHArea : Area
     public int numberOfMasses;
     public int rodLength;
     public string logString;
-    public float maxStartAngle;
+    public float tolerance;
     public float massRatio;
 
     public override void ResetArea()
@@ -75,9 +75,34 @@ public class MHArea : Area
         return length * new Vector3(Mathf.Cos(theta) * Mathf.Sin(phi), Mathf.Cos(phi) * Mathf.Sin(theta), Mathf.Cos(phi));
     }
 
+    public float DistanceFromDown()
+    {
+        float positionPenalty = 0;
+        Vector3[] diffCoords = GetDiffCoords();
+        Vector3 idealDiff = new Vector3(0, -rodLength, 0);
+        for (int i=0; i<numberOfMasses; i++)
+        {
+            positionPenalty += Vector3.Distance(idealDiff, diffCoords[i]);
+        }
+        positionPenalty /= (2.0f * rodLength);
+
+        return positionPenalty;
+    }
+
+    public float DistanceFromImmobile()
+    {
+        float velocityPenalty = 0;
+        for (int i = 0; i < numberOfMasses; i++)
+        {
+            velocityPenalty += Vector3.Distance(masses[i].GetComponent<Rigidbody>().velocity, Vector3.zero);
+
+        }
+        return velocityPenalty;
+    }
+
     public bool IsStable()
     {
-        return false;
+        return (DistanceFromDown() <= tolerance/2.0f) && (DistanceFromImmobile() <= tolerance/2.0f);
     }
     
    /**
