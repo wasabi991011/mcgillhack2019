@@ -24,7 +24,7 @@ public class MHAgent : Agent
 
     public override void AgentAction(float[] vectorAction, string textAction)
     {
-        AddReward(-1.0f / this.agentParameters.maxStep);
+        AddReward(-area.DistanceFromDown() / this.agentParameters.maxStep);
 
         int bodyIndex = PickFromNChoices(Mathf.Clamp(vectorAction[0], -1, 1), -1, 1, area.numberOfMasses);
         Vector3 unitRod = Vector3.Normalize(area.masses[bodyIndex].transform.position);
