@@ -191,12 +191,27 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 08d454c91918c2e4aa428b624e65f78d,
+      objectReference: {fileID: 11400000, guid: f82d028487f210d4a9ec7b5fa7e52ac5,
         type: 2}
     - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
         type: 3}
       propertyPath: magnitudeMultiplier
-      value: 100
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: agentParameters.maxStep
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: spawnForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: startAngle
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d, type: 3}
@@ -271,12 +286,27 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 08d454c91918c2e4aa428b624e65f78d,
+      objectReference: {fileID: 11400000, guid: f82d028487f210d4a9ec7b5fa7e52ac5,
         type: 2}
     - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
         type: 3}
       propertyPath: magnitudeMultiplier
-      value: 100
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: agentParameters.maxStep
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: spawnForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: startAngle
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d, type: 3}
@@ -351,12 +381,27 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 08d454c91918c2e4aa428b624e65f78d,
+      objectReference: {fileID: 11400000, guid: f82d028487f210d4a9ec7b5fa7e52ac5,
         type: 2}
     - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
         type: 3}
       propertyPath: magnitudeMultiplier
-      value: 100
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: agentParameters.maxStep
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: spawnForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: startAngle
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d, type: 3}
@@ -672,12 +717,27 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 08d454c91918c2e4aa428b624e65f78d,
+      objectReference: {fileID: 11400000, guid: f82d028487f210d4a9ec7b5fa7e52ac5,
         type: 2}
     - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
         type: 3}
       propertyPath: magnitudeMultiplier
-      value: 100
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: agentParameters.maxStep
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: spawnForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: startAngle
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d, type: 3}
@@ -752,12 +812,27 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 08d454c91918c2e4aa428b624e65f78d,
+      objectReference: {fileID: 11400000, guid: f82d028487f210d4a9ec7b5fa7e52ac5,
         type: 2}
     - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
         type: 3}
       propertyPath: magnitudeMultiplier
-      value: 100
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: agentParameters.maxStep
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: spawnForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: startAngle
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d, type: 3}
@@ -832,12 +907,27 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 08d454c91918c2e4aa428b624e65f78d,
+      objectReference: {fileID: 11400000, guid: f82d028487f210d4a9ec7b5fa7e52ac5,
         type: 2}
     - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
         type: 3}
       propertyPath: magnitudeMultiplier
-      value: 100
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: agentParameters.maxStep
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: spawnForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: startAngle
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d, type: 3}
@@ -912,12 +1002,27 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 08d454c91918c2e4aa428b624e65f78d,
+      objectReference: {fileID: 11400000, guid: f82d028487f210d4a9ec7b5fa7e52ac5,
         type: 2}
     - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
         type: 3}
       propertyPath: magnitudeMultiplier
-      value: 100
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: agentParameters.maxStep
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: spawnForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: startAngle
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d, type: 3}
@@ -992,12 +1097,27 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 08d454c91918c2e4aa428b624e65f78d,
+      objectReference: {fileID: 11400000, guid: f82d028487f210d4a9ec7b5fa7e52ac5,
         type: 2}
     - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
         type: 3}
       propertyPath: magnitudeMultiplier
-      value: 100
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000205649352252, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: agentParameters.maxStep
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: spawnForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608000206461955844, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d,
+        type: 3}
+      propertyPath: startAngle
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 783cfcf162a2edb4396aaa3e6d1a2e1d, type: 3}

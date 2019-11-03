@@ -27,8 +27,6 @@ public class MHArea : Area
         {
             bool isLeft = Random.Range(0, 2) == 0;
 
-            
-
             for (int i = 0; i < masses.Count; i++)
             {
                 Normal normalDistribution = new Normal(5, massStd);

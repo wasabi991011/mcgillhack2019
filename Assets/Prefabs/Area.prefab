@@ -147,7 +147,7 @@ MonoBehaviour:
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
   area: {fileID: 6608000206461955844}
-  magnitudeMultiplier: 100
+  magnitudeMultiplier: 50
 --- !u!1 &6608000206461955846
 GameObject:
   m_ObjectHideFlags: 0
