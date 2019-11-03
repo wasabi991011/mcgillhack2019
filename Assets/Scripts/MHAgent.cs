@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class MHAgent : Agent
 {
     public MHArea area;
-    public float maxForce = 100;
+    public float magnitudeMultiplier = 1;
     private string logString = "";
 
     void Start()
@@ -22,38 +22,20 @@ public class MHAgent : Agent
 
     public override void AgentAction(float[] vectorAction, string textAction)
     {
-        if(GetStepCount() > this.agentParameters.maxStep / 2.0f)
-        {
-            AddReward(-1.0f / this.agentParameters.maxStep);
-        } else
-        {
-            AddReward(1.0f / this.agentParameters.maxStep);
-        }
+        AddReward(-1.0f / this.agentParameters.maxStep);
 
-        int bodyIndex = PickFromNChoices(Mathf.Clamp(vectorAction[0], -1, 1), -1, 1, area.numberOfCubes);
-        Vector3 controlSignal = Vector3.zero;
-        controlSignal.x = vectorAction[1];
-        area.cubes[bodyIndex].GetComponent<Rigidbody>().AddForce(Vector3.Normalize(controlSignal) * maxForce);
+        int bodyIndex = PickFromNChoices(Mathf.Clamp(vectorAction[0], -1, 1), -1, 1, area.numberOfMasses);
+        Vector3 controlSignal = new Vector3(vectorAction[1], vectorAction[2], vectorAction[3]);
+        area.masses[bodyIndex].GetComponent<Rigidbody>().AddForce(controlSignal) * magnitudeMultiplier);
 
         area.logString += bodyIndex + ", ";
 
-        float decision = Mathf.Clamp(vectorAction[2], -1, 1);
-        float separator = 1.0f / area.numberOfCubes;
-        if (decision > 0) //decided
+        if (area.isStable())
         {
-            int decisionIndex = PickFromNChoices(decision, 0, 1, area.numberOfCubes);
-            Dictionary<int, int> answerKey = area.getAnswerKey();
-            // If the selected object index is the heaviest, thus 0 rank, reward agent.
-            if (answerKey[decisionIndex] == 0)
-            {
-                AddReward(1);
-            } else
-            {
-                // Else remove according to the how wrong it is.
-                AddReward(-answerKey[decisionIndex]);
-            }
+            AddReward(1.0f);
             Done();
         }
+        
     }
 
     public override void AgentReset()
