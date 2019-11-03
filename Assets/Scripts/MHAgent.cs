@@ -14,10 +14,11 @@ public class MHAgent : Agent
 
     public override void CollectObservations()
     {
-        foreach (GameObject mass in area.masses)
+        Vector3[] diffCoords = area.GetDiffCoords();
+        for (int i=0; i<area.numberOfMasses; i++)
         {
-            AddVectorObs(mass.GetComponent<Transform>().position);
-            AddVectorObs(mass.GetComponent<Rigidbody>().velocity);
+            AddVectorObs(diffCoords[i]);
+            AddVectorObs(area.masses[i].GetComponent<Rigidbody>().velocity);
         }
     }
 
