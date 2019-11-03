@@ -79,7 +79,12 @@ public class MHArea : Area
     {
         return false;
     }
-
+    
+    /**
+     * Returns an array of (theta, phi), 
+     * where theta is the planar angle (between 0 and 2pi, where 0 is on the x-axis)
+     * and phi is the vertical angle (between 0 and pi/2, where 0 is straight down)
+     **/
     public Vector2[] GetSphericalCoords()
     {
         Vector2[] coords = new Vector2[numberOfMasses];
