@@ -24,21 +24,17 @@ public class MHArea : Area
     {
         if (masses.Count == numberOfMasses)
         {
+            Vector3 direction = RandomSphericalCoordinate(Vector3.zero, 1);
+
             for (int i = 0; i < masses.Count; i++)
             {
-                if (i == 0)
-                {
-                    masses[i].transform.position = RandomSphericalCoordinate(anchor.transform.position, rodLength);
-                }
-                else
-                {
-                    masses[i].transform.position = RandomSphericalCoordinate(masses[i - 1].transform.position, rodLength);
-                }
-                masses[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
-
                 Normal normalDistribution = new Normal(10, massRatio);
 
-                masses[i].GetComponent<Rigidbody>().mass = (float)normalDistribution.Sample();
+                masses[i].transform.GetChild(0).GetComponent<Rigidbody>().mass = (float)normalDistribution.Sample();
+
+                masses[i].transform.position = direction * (i + 1) + anchor.transform.position;
+
+                masses[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
         else
@@ -51,16 +47,20 @@ public class MHArea : Area
     {
         masses = new List<GameObject>();
 
-        for(int i = 0; i < numberOfMasses; i++){
-            GameObject temporaryObject = Instantiate(massPrefab, new Vector3(transform.position.x, -5f * (i + 1), transform.position.z), Quaternion.Euler(0, 0, 0));
+        for (int i = 0; i < numberOfMasses; i++)
+        {
+            GameObject temporaryObject = Instantiate(massPrefab, new Vector3(transform.position.x, -4f * i, transform.position.z), transform.rotation);
 
-            if(i == 0){
-                anchor.GetComponent<ConfigurableJoint>().connectedBody = temporaryObject.GetComponent<Rigidbody>();
-            } else {
-                masses[i - 1].GetComponent<ConfigurableJoint>().connectedBody = temporaryObject.GetComponent<Rigidbody>();
-            }
-    
             temporaryObject.transform.parent = this.transform;
+
+            if (i == 0)
+            {
+                temporaryObject.GetComponent<SpringJoint>().connectedBody = anchor.GetComponent<Rigidbody>();
+            }
+            else
+            {
+                temporaryObject.GetComponent<SpringJoint>().connectedBody = masses[i - 1].transform.GetChild(0).GetComponent<Rigidbody>();
+            }
 
             masses.Add(temporaryObject);
         }
