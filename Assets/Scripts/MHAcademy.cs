@@ -12,7 +12,7 @@ public class MHAcademy : Academy
     public override void AcademyReset()
     {
         foreach(MHArea mhArea in mhAreas){
-            mhArea.maxStartAngle = resetParameters["max_start_angle"];
+            mhArea.tolerance = resetParameters["tolerance"];
             mhArea.massRatio = resetParameters["mass_ratio"];
         }
     }
