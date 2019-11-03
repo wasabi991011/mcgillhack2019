@@ -13,7 +13,8 @@ public class MHArea : Area
     public int rodLength;
     public string logString;
     public float tolerance;
-    public float massRatio;
+    public float massStd;
+    public float spawnForce = 25f;
 
     public override void ResetArea()
     {
@@ -30,24 +31,24 @@ public class MHArea : Area
 
             for (int i = 0; i < masses.Count; i++)
             {
-                Normal normalDistribution = new Normal(5, massRatio);
+                Normal normalDistribution = new Normal(5, massStd);
 
                 masses[i].transform.GetChild(0).GetComponent<Rigidbody>().mass = (float)normalDistribution.Sample();
 
                 if (isLeft)
                 {
-                    masses[i].transform.position = new Vector3(transform.position.x, transform.position.y, -4f * i - rodLength);
+                    masses[i].transform.position = new Vector3(transform.position.x, transform.position.y, -(rodLength + 1) * i - rodLength);
 
                     masses[i].transform.rotation = Quaternion.Euler(90f, 0, 0);
                 }
                 else
                 {
-                    masses[i].transform.position = new Vector3(transform.position.x, transform.position.y, 4f * i + rodLength);
+                    masses[i].transform.position = new Vector3(transform.position.x, transform.position.y, (rodLength + 1) * i + rodLength);
 
                     masses[i].transform.rotation = Quaternion.Euler(-90f, 0, 0);
                 }
 
-                masses[i].transform.GetChild(0).GetComponent<Rigidbody>().AddForce(new Vector3(0, Random.Range(-100f, 100f), 0), ForceMode.Impulse);
+                masses[i].transform.GetChild(0).GetComponent<Rigidbody>().AddForce(new Vector3(0, Random.Range(-spawnForce, spawnForce), 0), ForceMode.Impulse);
             }
         }
         else

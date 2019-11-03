@@ -13,7 +13,7 @@ public class MHAcademy : Academy
     {
         foreach(MHArea mhArea in mhAreas){
             mhArea.tolerance = resetParameters["tolerance"];
-            mhArea.massRatio = resetParameters["mass_ratio"];
+            mhArea.massStd = resetParameters["mass_std"];
         }
     }
 }
