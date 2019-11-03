@@ -16,7 +16,8 @@ public class MHAgent : Agent
     {
         foreach (GameObject mass in area.masses)
         {
-            AddVectorObs(mass.GetComponent<Rigidbody>().velocity.x);
+            AddVectorObs(mass.GetComponent<Transform>().position);
+            AddVectorObs(mass.GetComponent<Rigidbody>().velocity);
         }
     }
 
