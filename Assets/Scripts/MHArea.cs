@@ -80,33 +80,5 @@ public class MHArea : Area
         return false;
     }
     
-    /**
-     * Returns an array of (theta, phi), 
-     * where theta is the planar angle (between 0 and 2pi, where 0 is on the x-axis)
-     * and phi is the vertical angle (between 0 and pi/2, where 0 is straight down)
-     **/
-    public Vector2[] GetSphericalCoords()
-    {
-        Vector2[] coords = new Vector2[numberOfMasses];
-
-        Vector3 prevPos = anchor.transform.position;
-        Vector3 newPos;
-        Vector3 diffPos;
-        float theta;
-        float phi;
-        for (int i=0; i<numberOfMasses; i++)
-        {
-            newPos = masses[i].transform.position;
-            diffPos = newPos - prevPos;
-
-            theta = Mathf.Atan2(diffPos[2], diffPos[0]);
-            phi = Mathf.Asin(Mathf.Sqrt(Mathf.Pow(diffPos[2], 2) + Mathf.Pow(diffPos[0], 2)) / rodLength);
-
-            coords[i] = new Vector2(theta, phi);
-            newPos = prevPos;
-        }
-
-        return coords;
-
     }
 }
