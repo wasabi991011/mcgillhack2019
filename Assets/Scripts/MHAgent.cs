@@ -14,9 +14,9 @@ public class MHAgent : Agent
 
     public override void CollectObservations()
     {
-        foreach (GameObject cube in area.cubes)
+        foreach (GameObject mass in area.masses)
         {
-            AddVectorObs(cube.GetComponent<Rigidbody>().velocity.x);
+            AddVectorObs(mass.GetComponent<Rigidbody>().velocity.x);
         }
     }
 
@@ -26,11 +26,11 @@ public class MHAgent : Agent
 
         int bodyIndex = PickFromNChoices(Mathf.Clamp(vectorAction[0], -1, 1), -1, 1, area.numberOfMasses);
         Vector3 controlSignal = new Vector3(vectorAction[1], vectorAction[2], vectorAction[3]);
-        area.masses[bodyIndex].GetComponent<Rigidbody>().AddForce(controlSignal) * magnitudeMultiplier);
+        area.masses[bodyIndex].GetComponent<Rigidbody>().AddForce(controlSignal * magnitudeMultiplier);
 
         area.logString += bodyIndex + ", ";
 
-        if (area.isStable())
+        if (area.IsStable())
         {
             AddReward(1.0f);
             Done();
