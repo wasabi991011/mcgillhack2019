@@ -142,12 +142,12 @@ MonoBehaviour:
   agentParameters:
     agentCameras: []
     agentRenderTextures: []
-    maxStep: 500
+    maxStep: 100
     resetOnDone: 1
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
   area: {fileID: 6608000206461955844}
-  magnitudeMultiplier: 1
+  magnitudeMultiplier: 100
 --- !u!1 &6608000206461955846
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,4 +202,5 @@ MonoBehaviour:
   rodLength: 3
   logString: 
   tolerance: 0
-  massRatio: 0
+  massStd: 0
+  spawnForce: 25
