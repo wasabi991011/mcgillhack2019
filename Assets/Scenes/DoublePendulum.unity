@@ -171,9 +171,9 @@ MonoBehaviour:
   massPrefab: {fileID: 7477763793995314887, guid: 1fb8d796aa0ca894e99febdcaa41a851,
     type: 3}
   numberOfMasses: 2
-  rodLength: 5
+  rodLength: 3
   logString: 
-  maxStartAngle: 0
+  tolerance: 0
   massRatio: 0
 --- !u!1 &1035533520
 GameObject:
@@ -221,10 +221,10 @@ MonoBehaviour:
     targetFrameRate: 60
   resetParameters:
     m_ResetParameters:
+    - key: tolerance
+      value: 0.5
     - key: mass_ratio
       value: 1
-    - key: max_start_angle
-      value: 45
   mhAreas: []
 --- !u!4 &1035533522
 Transform:
