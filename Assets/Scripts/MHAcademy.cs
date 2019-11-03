@@ -12,8 +12,8 @@ public class MHAcademy : Academy
     public override void AcademyReset()
     {
         foreach(MHArea mhArea in mhAreas){
-            mhArea.beta = resetParameters["beta"];
-            mhArea.numberOfCubes = Mathf.FloorToInt(resetParameters["number_of_cubes"]);
+            mhArea.maxStartAngle = resetParameters["max_start_angle"];
+            mhArea.massRatio = resetParameters["mass_ratio"];
         }
     }
 }
