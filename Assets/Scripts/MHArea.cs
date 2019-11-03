@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using MLAgents;
+using MathNet.Numerics.Distributions;
 
 public class MHArea : Area
 {
@@ -9,8 +10,10 @@ public class MHArea : Area
     public List<GameObject> masses;
     public GameObject massPrefab;
     public int numberOfMasses;
-    public int stringLength;
+    public int rodLength;
     public string logString;
+    public float maxStartAngle;
+    public float massRatio;
 
     public override void ResetArea()
     {
@@ -25,14 +28,17 @@ public class MHArea : Area
             {
                 if (i == 0)
                 {
-                    masses[i].transform.position = RandomSphericalCoordinate(anchor.transform.position);
+                    masses[i].transform.position = RandomSphericalCoordinate(anchor.transform.position, rodLength);
                 }
                 else
                 {
-                    masses[i].transform.position = RandomSphericalCoordinate(masses[i - 1].transform.position);
+                    masses[i].transform.position = RandomSphericalCoordinate(masses[i - 1].transform.position, rodLength);
                 }
-                masses[i].transform.rotation = Quaternion.Euler(0, 0, 0);
                 masses[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+                Normal normalDistribution = new Normal(10, massRatio);
+
+                masses[i].GetComponent<Rigidbody>().mass = (float)normalDistribution.Sample();
             }
         }
         else
@@ -46,17 +52,27 @@ public class MHArea : Area
         masses = new List<GameObject>();
 
         for(int i = 0; i < numberOfMasses; i++){
-            masses.Add(Instantiate(massPrefab, new Vector3(transform.position.x, -5f * i, transform.position.z), Quaternion.Euler(0, 0, 0)));
+            GameObject temporaryObject = Instantiate(massPrefab, new Vector3(transform.position.x, -5f * (i + 1), transform.position.z), Quaternion.Euler(0, 0, 0));
+
+            if(i == 0){
+                anchor.GetComponent<ConfigurableJoint>().connectedBody = temporaryObject.GetComponent<Rigidbody>();
+            } else {
+                masses[i - 1].GetComponent<ConfigurableJoint>().connectedBody = temporaryObject.GetComponent<Rigidbody>();
+            }
+    
+            temporaryObject.transform.parent = this.transform;
+
+            masses.Add(temporaryObject);
         }
 
         ResetMasses();
     }
 
-    Vector3 RandomSphericalCoordinate(Vector3 origin)
+    public static Vector3 RandomSphericalCoordinate(Vector3 origin, float length)
     {
         float phi = Random.Range(0f, Mathf.PI);
         float theta = Random.Range(0f, 2f * Mathf.PI);
-        return stringLength * new Vector3(Mathf.Cos(theta) * Mathf.Sin(phi), Mathf.Cos(phi), Mathf.Cos(phi) * Mathf.Sin(theta));
+        return length * new Vector3(Mathf.Cos(theta) * Mathf.Sin(phi), Mathf.Cos(phi) * Mathf.Sin(theta), Mathf.Cos(phi));
     }
 
     public bool IsStable()
