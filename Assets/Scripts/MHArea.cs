@@ -79,4 +79,29 @@ public class MHArea : Area
     {
         return false;
     }
+
+    public Vector2[] GetSphericalCoords()
+    {
+        Vector2[] coords = new Vector2[numberOfMasses];
+
+        Vector3 prevPos = anchor.transform.position;
+        Vector3 newPos;
+        Vector3 diffPos;
+        float theta;
+        float phi;
+        for (int i=0; i<numberOfMasses; i++)
+        {
+            newPos = masses[i].transform.position;
+            diffPos = newPos - prevPos;
+
+            theta = Mathf.Atan2(diffPos[2], diffPos[0]);
+            phi = Mathf.Asin(Mathf.Sqrt(Mathf.Pow(diffPos[2], 2) + Mathf.Pow(diffPos[0], 2)) / rodLength);
+
+            coords[i] = new Vector2(theta, phi);
+            newPos = prevPos;
+        }
+
+        return coords;
+
+    }
 }
