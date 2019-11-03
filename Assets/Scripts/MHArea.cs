@@ -80,5 +80,24 @@ public class MHArea : Area
         return false;
     }
     
+   /**
+    * Returns the coordinate of the mass with respect to its attachement point 
+    * (either the anchor or mass that is one ord closer to the anchor)
+    **/
+    public Vector3[] GetDiffCoords()
+    {
+        Vector3[] coords = new Vector3[numberOfMasses];
+        
+        Vector3 prevPos = anchor.transform.position;
+        Vector3 newPos;
+        for (int i = 0; i < numberOfMasses; i++)
+        {
+            newPos = masses[i].transform.position;
+            coords[i] = newPos - prevPos;
+            newPos = prevPos;
+        }
+
+        return coords;
+
     }
 }
